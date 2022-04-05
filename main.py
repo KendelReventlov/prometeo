@@ -1,10 +1,10 @@
 from gpiozero import LED
 import RPi.GPIO as GPIO
 import time
-import urllib
+from urllib import request
 from urllib import parse
 
-urllib.request.urlopen("https://prometeoia.herokuapp.com/"+parse.urlencode({"nombre":"RASPBERRY"}))
+request.urlopen("https://prometeoia.herokuapp.com/"+parse.urlencode({"nombre":"RASPBERRY"}))
 
 led = LED(26)
 leds = LED(16)
