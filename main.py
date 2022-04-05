@@ -1,6 +1,10 @@
-"""from gpiozero import LED
+from gpiozero import LED
 import RPi.GPIO as GPIO
 import time
+import urllib
+from urllib import parse
+
+urlib.request.urlopen("https://prometeoia.herokuapp.com/"+parse.urlencode({"nombre":"RASPBERRY"})
 
 led = LED(26)
 leds = LED(16)
@@ -38,14 +42,3 @@ except KeyboardInterrupt:
     pass
 finally:
     GPIO.cleanup()
-"""
-import Adafruit_DHT  
-import time  
-
-while True:
-  sensor = Adafruit_DHT.DHT11 #Cambia por DHT22 y si usas dicho sensor
-  pin = 7 #Pin en la raspberry donde conectamos el sensor
-  humedad, temperatura = Adafruit_DHT.read_retry(sensor, pin)
-
-  print ('Humedad: ' , humedad)
-  print ('Temperatura: ' , temperatura)
