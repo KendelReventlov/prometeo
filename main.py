@@ -22,6 +22,8 @@ def rc_time (pin_to_circuit):
     #Count until the pin goes high
     while (GPIO.input(pin_to_circuit) == GPIO.LOW):
         count += 1
+        if count > 200:
+            print("MUY GRANDE")
 
     return count
 
