@@ -4,7 +4,10 @@ import time
 from urllib import request
 from urllib import parse
 
-request.urlopen("https://prometeoia.herokuapp.com/"+parse.urlencode({"nombre":"RASPBERRY"}))
+mensaje = request.urlopen("https://prometeoia.herokuapp.com/"+parse.urlencode({"nombre":"RASPBERRY"}))
+print("Se envio: ")
+print("https://prometeoia.herokuapp.com/"+parse.urlencode({"nombre":"RASPBERRY"}))
+print(mensaje.read().decode('utf-8'))
 
 led = LED(26)
 leds = LED(16)
@@ -37,7 +40,7 @@ def rc_time (pin_to_circuit):
 try:
     # Main loop
     while True:
-        print(rc_time(pin_to_circuit))
+        rc_time(pin_to_circuit)
 except KeyboardInterrupt:
     pass
 finally:
