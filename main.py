@@ -1,4 +1,5 @@
 from gpiozero import LED
+import RPi.GPIO as GPIO
 from time import sleep
 
 led = LED(26)
