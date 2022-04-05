@@ -7,8 +7,13 @@ import (
 )
 
 func main() {
+    var nombre_actual string
     http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-        fmt.Fprintf(w, r.URL.Query().Get("nombre"))
+        nombre := r.URL.Query().Get("nombre")
+        if nombre != ""{
+            nombre_actual = nombre
+        }
+        fmt.Fprintf(w, nombre_actual)
     })
 
     http.ListenAndServe(":"+os.Getenv("PORT"), nil)
