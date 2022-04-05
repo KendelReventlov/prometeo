@@ -22,9 +22,9 @@ def rc_time (pin_to_circuit):
     #Count until the pin goes high
     while (GPIO.input(pin_to_circuit) == GPIO.LOW):
         count += 1
-        if count <= 200:
+        if count <= 20:
             led.on()
-        elif count > 200:
+        elif count > 20:
             led.off()
 
     return count
