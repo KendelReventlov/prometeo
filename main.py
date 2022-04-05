@@ -49,5 +49,3 @@ while True:
 
   print ('Humedad: ' , humedad)
   print ('Temperatura: ' , temperatura)
- 
-  time.sleep(1) #Cada segundo se evalúa el sensor
