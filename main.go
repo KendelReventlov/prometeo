@@ -1,14 +1,14 @@
 package main
 
 import (
-    "fmt"
-    "net/http"
+	"fmt"
+	"net/http"
 	"os"
 )
 
 func main() {
     http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-        fmt.Fprintf(w, "Hello, you've requested: %s\n", r.URL.Path)
+        fmt.Fprintf(w, r.URL.Query().Get("nombre"))
     })
 
     http.ListenAndServe(":"+os.Getenv("PORT"), nil)
