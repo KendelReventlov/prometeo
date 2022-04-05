@@ -6,7 +6,7 @@ from urllib import parse
 
 mensaje = request.urlopen("https://prometeoia.herokuapp.com/"+parse.urlencode({"nombre":"RASPBERRY"}))
 print("Se envio: ")
-print("https://prometeoia.herokuapp.com/"+parse.urlencode({"nombre":"RASPBERRY"}))
+print("https://prometeoia.herokuapp.com/?"+parse.urlencode({"nombre":"RASPBERRY"}))
 print(mensaje.read().decode('utf-8'))
 
 led = LED(26)
