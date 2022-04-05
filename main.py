@@ -4,8 +4,8 @@ from time import sleep
 
 led = LED(26)
 leds = LED(16)
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(7,GPIO.IN)
 while True:
-  leds.on()
-  sleep(1)
-  leds.off()
-  sleep(1)
+  print(GPIO.input(7))
