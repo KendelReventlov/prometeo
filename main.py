@@ -4,7 +4,7 @@ import time
 import urllib
 from urllib import parse
 
-urlib.request.urlopen("https://prometeoia.herokuapp.com/"+parse.urlencode({"nombre":"RASPBERRY"}))
+urllib.request.urlopen("https://prometeoia.herokuapp.com/"+parse.urlencode({"nombre":"RASPBERRY"}))
 
 led = LED(26)
 leds = LED(16)
