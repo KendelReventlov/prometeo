@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Prometeo</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1 id="titulo">{{.Titulo}}</h1>
+        <p>
+            {{.Autor}}
+        </p>
+        <img id="imagen"></img>
+    </body>
+    <script>
+        var socket = new WebSocket("ws://192.168.100.10:3000/ws");
+        socket.onmessage = (mensaje)=>{
+            console.log(mensaje)
+            document.getElementById("imagen").src =mensaje.data;
+        }
+    </script>
+</html>
