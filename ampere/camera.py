@@ -1,5 +1,5 @@
 from picamera import PiCamera
-import RPI.GPIO as gpio
+import RPi.GPIO as gpio
 
 gpio.setmode(gpio.BOARD)
 gpio.setup(26,gpio.OUT)
