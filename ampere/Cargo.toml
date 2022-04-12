@@ -6,6 +6,3 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-websocket = "0.24.0"
-image = "0.24.1"
-image-base64 = "0.1.0"
