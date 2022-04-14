@@ -11,7 +11,7 @@ exito = 1
 
 while exito:
   exito,imagen = video_objeto.read()
-  cv2.imwrite("frame%d.jpg" % count,image)
+  cv2.imwrite("frame%d.jpg" % count,imagen)
   count+=1
   print(imagen)
 
