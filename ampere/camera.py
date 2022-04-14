@@ -9,9 +9,9 @@ video_objeto = cv2.VideoCapture(0)
 count = 0
 exito = 1
 
-
-exito,imagen = video_objeto.read()
-count+=1
-print(imagen[0])
+while exito:
+  exito,imagen = video_objeto.read()
+  count+=1
+  print(len(imagen))
 
 print("HECHO")
