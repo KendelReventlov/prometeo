@@ -1,23 +1,29 @@
 extern crate websocket;
 extern crate image_base64;
-extern crate camera_capture;
+extern crate rascam;
+
 use websocket::ClientBuilder;
 use std::process::Command;
-pub enum camara{
-  encendida(camera_capture::Builder),
-  apagada,
-}
+use rascam::*;
+use std::{thread,time};
 
 fn main(){
 
-  loop{
-    let cam= camera_capture::create(0).unwrap();
-    for imagen in cam.fps(5.0).unwrap().start().unwrap(){
-      println!("{:?}",imagen);
-    }
+  let info = info().unwrap();
+  if info.cameras.len() < 1 {
+    println!("No se encontraron camaras!")
+    std::process::exit(0);
+  }
 
+  let mut camara = SimpleCamera::new(info.cameras[0]).unwrap();
+  camara.activate().unwrap();
+  thread::sleep(time::Duration::from_secs(2));  
+
+  loop{
     let mut cliente = ClientBuilder::new("ws://192.168.100.10:3000/ws").unwrap().connect_insecure().unwrap();
     cliente.send_message(&websocket::Message::text("hola")).unwrap();
-    std::thread::sleep_ms(5000);
+    let b = camara.take_one().unwrap();
+    println!("BUFFER: {:?}",b);
+    println!();
   }
 }
