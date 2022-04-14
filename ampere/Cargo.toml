@@ -8,4 +8,4 @@ edition = "2021"
 [dependencies]
 websocket = "0.24.0"
 image-base64 = "0.1.0"
-camera_capture = "0.5.0"
+rascam = { version = "0.0.1", features = ["debug"] }
