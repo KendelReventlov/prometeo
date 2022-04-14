@@ -5,7 +5,7 @@ import cv2
 led = LED(26)
 led.on()
 
-video_objeto = cv2.VideoCapture("./video.mp4")
+video_objeto = cv2.VideoCapture(0)
 count = 0
 exito = 1
 
