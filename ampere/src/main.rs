@@ -2,6 +2,7 @@ extern crate websocket;
 extern crate base64;
 use websocket::ClientBuilder;
 use std::process::Command;
+use std::io::prelude::*;
 
 fn main(){
   loop{
