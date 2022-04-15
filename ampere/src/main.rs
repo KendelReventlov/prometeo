@@ -12,7 +12,6 @@ fn main(){
   ]);
   std::thread::sleep_ms(10000);
   let mut stream = TcpStream::connect("127.0.0.1:7878").unwrap();
-  stream.write(&[1]).unwrap();
   let mut buffer = [0;128];
   stream.read(&mut buffer).unwrap();
 
