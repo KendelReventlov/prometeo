@@ -19,7 +19,9 @@ fn main(){
   fn conectar() -> TcpStream{
     match TcpStream::connect("127.0.0.1:7878"){
       Ok(s)=>{return s}
-      Err(_)=>{conectar()}
+      Err(_)=>{
+        println!("RECONECTANDO . . .");
+        conectar()}
     }
   }
   let mut stream = conectar();
