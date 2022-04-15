@@ -9,49 +9,22 @@ extern crate png;
 use png::*;
 
 fn main(){
-
-  std::thread::spawn(move ||{
+  loop{
     let comando = std::process::Command::new("raspistill").args([
-        "-t","0"
+      "-t","0"
     ]).args([
       "-w","720",
     ]).args([
       "-h","480",
     ]).args([
-        "-o",
-        "tcp://127.0.0.1:7878",
-    ]).spawn().unwrap();
-  });
+      "-o",
+      "imagen.jpg",
+    ]).output().unwrap();
 
-  fn conectar() -> TcpStream{
-    match TcpStream::connect("127.0.0.1:7878"){
-      Ok(s)=>{return s}
-      Err(_)=>{conectar()}
-    }
-  }
-  let mut stream = conectar();
-
-
-  
-  loop{
-    std::thread::spawn(move ||{
-      let comando = std::process::Command::new("raspistill").args([
-          "-t","0"
-      ]).args([
-        "-w","720",
-      ]).args([
-        "-h","480",
-      ]).args([
-          "-o",
-          "tcp://127.0.0.1:7878",
-      ]).spawn().unwrap();
-    });
-    let mut buffer = [0;1382400];
-    stream.read(&mut buffer).unwrap();
-    println!("BUFFER: {:?}",buffer);
-    println!("LEN BUFFER: {}",buffer.len());
+    let mut archivo = [0;0];
+    std::fs::File::open(std::path::Path::new("imagen.jpg")).unwrap().read(&mut archivo).unwrap();
 
     let mut cliente = ClientBuilder::new("ws://192.168.100.10:3000/ws").unwrap().connect_insecure().unwrap();
-    cliente.send_message(&websocket::Message::text(base64::encode(&buffer))).unwrap();
+    cliente.send_message(&websocket::Message::text(base64::encode(&archivo))).unwrap();
   }
 }
