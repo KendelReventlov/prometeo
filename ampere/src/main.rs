@@ -21,6 +21,8 @@ fn main(){
       "imagen.jpg",
     ]).output().unwrap();
 
+    println!("COMANDO: {:?}",comando);
+    
     let mut archivo = [0;0];
     std::fs::File::open(std::path::Path::new("imagen.jpg")).unwrap().read(&mut archivo).unwrap();
 
