@@ -19,7 +19,7 @@ fn main(){
     ]).args([
       "-o",
       "imagen.jpg",
-    ]).output().unwrap();
+    ]).status().unwrap();
 
     println!("SALIDA: {:?}",comando);
 
