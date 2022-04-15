@@ -11,7 +11,8 @@ fn main(){
     "0",
     "-l",
     "-o tcp://127.0.0.1:7878",
-  ]);
+  ]).output().unwrap();
+  println!("SALIDA: {:?}",comando);
   std::thread::sleep_ms(5000);
   let mut stream = TcpStream::connect("127.0.0.1:7878").unwrap();
   stream.write(&[1]).unwrap();
