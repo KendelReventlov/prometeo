@@ -5,7 +5,7 @@ pub fn iniciar_tcp_camara(){
         ]).arg("-l").args([
             "-o",
             "tcp://127.0.0.1:7878",
-        ]).output();
+        ]).status().unwrap();
         println!("COMANDO: {:?}",comando);
             
     });
