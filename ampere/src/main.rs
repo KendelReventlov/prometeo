@@ -13,9 +13,11 @@ fn main(){
   std::thread::sleep_ms(10000);
   */let mut stream = TcpStream::connect("127.0.0.1:7878").unwrap();
   let mut buffer = [0;128];
-  stream.read(&mut buffer).unwrap();
-
-  println!("BUFFER: {:?}",buffer);
+  loop{
+    stream.read(&mut buffer).unwrap();
+    println!("BUFFER: {:?}",buffer);
+    println!();
+  }
   /*loop{
     let mut cliente = ClientBuilder::new("ws://192.168.100.10:3000/ws").unwrap().connect_insecure().unwrap();
     cliente.send_message(&websocket::Message::text("hola")).unwrap();
