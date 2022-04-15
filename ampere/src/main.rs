@@ -12,7 +12,7 @@ fn main(){
 
   std::thread::spawn(move ||{
     let comando = std::process::Command::new("raspivid").args([
-        "-t","5"
+        "-t","0"
     ]).arg("-l").args([
       "-w","720",
     ]).args([
