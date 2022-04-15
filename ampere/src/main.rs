@@ -16,14 +16,18 @@ fn main(){
     ]).spawn().unwrap();
 });
 
-  let mut stream = TcpStream::connect("127.0.0.1:7878").unwrap();
+  fn conectar() -> TcpStream{
+    match TcpStream::connect("127.0.0.1:7878"){
+      Ok(s)=>{return s}
+      Err(_)=>{conectar()}
+    }
+  }
+  let mut stream = conectar();
+
   loop{
-    let mut buffer = [0;128];
-    stream.read(&mut buffer).unwrap();
+    let mut buffer = Vec::new();
+    stream.read_to_end(&mut buffer).unwrap();
     println!("BUFFER: {:?}",buffer);
-    std::fs::write(std::path::Path::new("uwu.png"), &buffer).unwrap();
-    let mut cliente = ClientBuilder::new("ws://192.168.100.10:3000/ws").unwrap().connect_insecure().unwrap();
-    let imagen = image_base64::to_base64("uwu.png");
-    cliente.send_message(&websocket::Message::text(imagen)).unwrap();
+    println!("LEN BUFFER: {}",buffer.len())
   }
 }
