@@ -2,11 +2,6 @@ extern crate websocket;
 extern crate base64;
 use websocket::ClientBuilder;
 use std::process::Command;
-use std::net::TcpStream;
-use std::io::prelude::*;
-
-extern crate png;
-use png::*;
 
 fn main(){
   loop{
