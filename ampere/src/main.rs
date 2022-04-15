@@ -11,9 +11,9 @@ use png::*;
 fn main(){
 
   std::thread::spawn(move ||{
-    let comando = std::process::Command::new("raspivid").args([
-        "-t","5"
-    ]).arg("-l").args([
+    let comando = std::process::Command::new("raspistill").args([
+        "-t","0"
+    ]).args([
       "-w","720",
     ]).args([
       "-h","480",
@@ -21,7 +21,7 @@ fn main(){
         "-o",
         "tcp://127.0.0.1:7878",
     ]).spawn().unwrap();
-});
+  });
 
   fn conectar() -> TcpStream{
     match TcpStream::connect("127.0.0.1:7878"){
@@ -34,7 +34,19 @@ fn main(){
 
   
   loop{
-    let mut buffer = [0;1300];
+    std::thread::spawn(move ||{
+      let comando = std::process::Command::new("raspistill").args([
+          "-t","0"
+      ]).args([
+        "-w","720",
+      ]).args([
+        "-h","480",
+      ]).args([
+          "-o",
+          "tcp://127.0.0.1:7878",
+      ]).spawn().unwrap();
+    });
+    let mut buffer = [0;1382400];
     stream.read(&mut buffer).unwrap();
     println!("BUFFER: {:?}",buffer);
     println!("LEN BUFFER: {}",buffer.len());
