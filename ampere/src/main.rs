@@ -10,8 +10,7 @@ fn main(){
     "-t",
     "0",
     "-l",
-    "-o",
-    "tcp://127.0.0.1:7878"
+    "-o tcp://127.0.0.1:7878",
   ]).output().unwrap();
   println!("SALIDA: {:?}",comando);
   let mut stream = TcpStream::connect("127.0.0.1:7878").unwrap();
