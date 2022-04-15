@@ -27,7 +27,7 @@ fn main(){
   let mut stream = conectar();
   println!("SERVIDOR INICIADO!");
   loop{
-    let mut buffer = Vec::new();
+    let mut buffer = [0;1024];
     stream.read_to_end(&mut buffer).unwrap();
     println!("BUFFER: {:?}",buffer);
     println!("LEN BUFFER: {}",buffer.len())
