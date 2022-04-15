@@ -13,7 +13,7 @@ fn main(){
     ]).arg("-l").args([
         "-o",
         "tcp://127.0.0.1:7878",
-    ]).spawn().unwrap();
+    ]).output().unwrap();
 });
 
   fn conectar() -> TcpStream{
@@ -25,7 +25,7 @@ fn main(){
     }
   }
   let mut stream = conectar();
-
+  println!("SERVIDOR INICIADO!");
   loop{
     let mut buffer = Vec::new();
     stream.read_to_end(&mut buffer).unwrap();
