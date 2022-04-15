@@ -12,6 +12,7 @@ fn main(){
     "-l",
     "-o tcp://127.0.0.1:7878",
   ]);
+  std::thread::sleep_ms(5000);
   let mut stream = TcpStream::connect("127.0.0.1:7878").unwrap();
   stream.write(&[1]).unwrap();
   let mut buffer = [0;128];
