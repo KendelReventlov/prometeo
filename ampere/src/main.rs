@@ -14,9 +14,9 @@ fn main(){
     let comando = std::process::Command::new("raspivid").args([
         "-t","5"
     ]).arg("-l").args([
-      "-w","480",
+      "-w","720",
     ]).args([
-      "-h","320",
+      "-h","480",
     ]).args([
         "-o",
         "tcp://127.0.0.1:7878",
