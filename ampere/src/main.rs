@@ -1,5 +1,5 @@
 extern crate websocket;
-extern crate image_base64;
+extern crate base64;
 use websocket::ClientBuilder;
 use std::process::Command;
 use std::net::TcpStream;
@@ -40,6 +40,6 @@ fn main(){
     println!("LEN BUFFER: {}",buffer.len());
 
     let mut cliente = ClientBuilder::new("ws://192.168.100.10:3000/ws").unwrap().connect_insecure().unwrap();
-    cliente.send_message(&websocket::Message::text(String::from_utf8_lossy(&buffer))).unwrap();
+    cliente.send_message(&websocket::Message::text(base64::encode(&buffer))).unwrap();
   }
 }
