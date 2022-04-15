@@ -11,7 +11,7 @@ use png::*;
 fn main(){
   loop{
     let comando = std::process::Command::new("raspistill").args([
-      "-t","0"
+      "-t","5"
     ]).args([
       "-w","720",
     ]).args([
