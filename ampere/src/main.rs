@@ -11,6 +11,9 @@ use png::*;
 fn main(){
   loop{
     let comando = std::process::Command::new("raspistill").args([
+      "-t",
+      "500",
+    ]).args([
       "-o",
       "imagen.jpg",
     ]).status().unwrap();
