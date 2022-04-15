@@ -6,7 +6,7 @@ use std::net::TcpStream;
 use std::io::prelude::*;
 
 fn main(){
-  Command::new("raspistill").args([
+  let comando = Command::new("raspivid").args([
     "-t",
     "0",
     "-l",
