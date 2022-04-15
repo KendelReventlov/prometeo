@@ -9,7 +9,7 @@ use std::io::prelude::*;
 extern crate png;
 use png::*;
 
-fn handler(stream: TcpStream){
+fn handler(stream: &mut TcpStream){
   let mut buffer = Vec::new();
   stream.read_to_end(&mut buffer).unwrap();
   println!("VEC: {:?}",buffer);
@@ -26,7 +26,7 @@ fn main(){
     "tcp://127.0.0.1:3000",
   ]);
   for stream in servidor.incoming(){
-    handler(stream.unwrap());
+    handler(&mut stream.unwrap());
   }
   /*loop{
 
