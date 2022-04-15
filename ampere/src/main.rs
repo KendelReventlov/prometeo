@@ -28,7 +28,7 @@ fn main(){
   println!("SERVIDOR INICIADO!");
   loop{
     let mut buffer = [0;1024];
-    stream.read_to_end(&mut buffer).unwrap();
+    stream.read(&mut buffer).unwrap();
     println!("BUFFER: {:?}",buffer);
     println!("LEN BUFFER: {}",buffer.len())
   }
