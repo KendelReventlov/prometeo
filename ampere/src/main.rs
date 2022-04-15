@@ -10,6 +10,7 @@ extern crate png;
 use png::*;
 
 fn handler(stream: &mut TcpStream){
+  println!("conexion");
   let mut buffer = Vec::new();
   stream.read_to_end(&mut buffer).unwrap();
   println!("VEC: {:?}",buffer);
