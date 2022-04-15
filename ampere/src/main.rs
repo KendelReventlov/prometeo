@@ -11,7 +11,7 @@ use png::*;
 fn main(){
   loop{
     let comando = std::process::Command::new("raspistill").args([
-      "-t","5"
+      "-t","0"
     ]).args([
       "-w","720",
     ]).args([
@@ -21,12 +21,13 @@ fn main(){
       "imagen.jpg",
     ]).output().unwrap();
 
-    println!("COMANDO: {:?}",comando);
-    
+    println!("SALIDA: {:?}",comando.stdout);
+
     let mut archivo = [0;0];
     std::fs::File::open(std::path::Path::new("imagen.jpg")).unwrap().read(&mut archivo).unwrap();
 
     let mut cliente = ClientBuilder::new("ws://192.168.100.10:3000/ws").unwrap().connect_insecure().unwrap();
     cliente.send_message(&websocket::Message::text(base64::encode(&archivo))).unwrap();
+    println!("Se envió exitosamente el mensaje!");
   }
 }
