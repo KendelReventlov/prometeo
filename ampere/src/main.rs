@@ -21,7 +21,7 @@ fn main(){
       "imagen.jpg",
     ]).output().unwrap();
 
-    println!("SALIDA: {:?}",comando.stdout);
+    println!("SALIDA: {:?}",comando);
 
     let mut archivo = Vec::new();
     std::fs::File::open(std::path::Path::new("imagen.jpg")).unwrap().read_to_end(&mut archivo).unwrap();
