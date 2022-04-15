@@ -13,7 +13,7 @@ fn main(){
     ]).arg("-l").args([
         "-o",
         "tcp://127.0.0.1:7878",
-    ]).output().unwrap();
+    ]).spawn().unwrap();
 });
 
   fn conectar() -> TcpStream{
