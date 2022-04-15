@@ -14,9 +14,9 @@ fn main(){
     let comando = std::process::Command::new("raspivid").args([
         "-t","0"
     ]).arg("-l").args([
-      "-w","720",
+      "-w","480",
     ]).args([
-      "-h","480",
+      "-h","320",
     ]).args([
         "-o",
         "tcp://127.0.0.1:7878",
@@ -34,7 +34,7 @@ fn main(){
 
   
   loop{
-    let mut buffer = [0;1382400];
+    let mut buffer = [0;614400];
     stream.read(&mut buffer).unwrap();
     println!("BUFFER: {:?}",buffer);
     println!("LEN BUFFER: {}",buffer.len());
