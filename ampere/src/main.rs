@@ -21,9 +21,9 @@ fn main(){
     let mut buffer = [0;128];
     stream.read(&mut buffer).unwrap();
     println!("BUFFER: {:?}",buffer);
-  }
-  /*loop{
+    std::fs::write(std::path::Path::new("uwu.png"), &buffer).unwrap();
     let mut cliente = ClientBuilder::new("ws://192.168.100.10:3000/ws").unwrap().connect_insecure().unwrap();
-    cliente.send_message(&websocket::Message::text("hola")).unwrap();
-  }*/
+    let imagen = image_base64::to_base64("uwu.png");
+    cliente.send_message(&websocket::Message::text(imagen)).unwrap();
+  }
 }
