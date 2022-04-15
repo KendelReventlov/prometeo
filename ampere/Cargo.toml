@@ -8,4 +8,3 @@ edition = "2021"
 [dependencies]
 websocket = "0.24.0"
 image-base64 = "0.1.0"
-mmal-sys = "0.0.0"
