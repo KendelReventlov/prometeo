@@ -5,7 +5,11 @@ use std::process::Command;
 use std::net::TcpStream;
 use std::io::prelude::*;
 
+mod executer;
+
 fn main(){
+
+  executer::iniciar_tcp_camara();
   /*Command::new("raspivid").args(["-t","0"]).arg("-l").args([
     "-o",
     "tcp://127.0.0.1:7878",
