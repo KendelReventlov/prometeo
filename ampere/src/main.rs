@@ -12,7 +12,7 @@ fn main(){
   loop{
     let comando = std::process::Command::new("raspistill").args([
       "-t",
-      "200",
+      "0",
     ]).args([
       "-o",
       "imagen.jpg",
