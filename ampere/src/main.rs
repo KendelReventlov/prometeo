@@ -34,7 +34,7 @@ fn main(){
 
   
   loop{
-    let mut buffer = [0;614400];
+    let mut buffer = [0;5000];
     stream.read(&mut buffer).unwrap();
     println!("BUFFER: {:?}",buffer);
     println!("LEN BUFFER: {}",buffer.len());
