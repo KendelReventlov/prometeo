@@ -6,11 +6,10 @@ use std::net::TcpStream;
 use std::io::prelude::*;
 
 fn main(){
-  let comando = Command::new("raspivid").args(["-t","0"]).arg("-l").args([
+  Command::new("raspivid").args(["-t","0"]).arg("-l").args([
     "-o",
     "tcp://127.0.0.1:7878",
-  ]).status();
-  println!("SALIDA: {:?}",comando);
+  ]);
   let mut stream = TcpStream::connect("127.0.0.1:7878").unwrap();
   stream.write(&[1]).unwrap();
   let mut buffer = [0;128];
