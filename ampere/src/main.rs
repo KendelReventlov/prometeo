@@ -13,6 +13,12 @@ fn main(){
     let comando = std::process::Command::new("raspistill").args([
       "-t",
       "150",
+    ]).argas([
+      "-w",
+      "720",
+    ]).argas([
+      "-h",
+      "480",
     ]).args([
       "-o",
       "imagen.jpg",
@@ -22,6 +28,7 @@ fn main(){
 
     let mut archivo = Vec::new();
     std::fs::File::open(std::path::Path::new("imagen.jpg")).unwrap().read_to_end(&mut archivo).unwrap();
+    println!("LEN FILE: {:?}",archivo.len());
 
     let mut cliente = ClientBuilder::new("ws://192.168.100.10:3000/ws").unwrap().connect_insecure().unwrap();
     cliente.send_message(&websocket::Message::text(base64::encode(&archivo))).unwrap();
