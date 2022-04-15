@@ -13,10 +13,10 @@ fn main(){
     let comando = std::process::Command::new("raspistill").args([
       "-t",
       "150",
-    ]).argas([
+    ]).args([
       "-w",
       "720",
-    ]).argas([
+    ]).args([
       "-h",
       "480",
     ]).args([
